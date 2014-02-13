@@ -1,0 +1,42 @@
+<header>
+    <nav class="nav-primary" role="navigation" >
+        <img src="http://gstatic.goldenline.pl/gstopka/gl-white-logo.png">
+        <ul>
+            {% if page.active == "index" %}
+                <li class="active"><a href="{{ site.baseurl }}">Wprowadzenie</a></li>
+            {% else %}
+                <li><a href="{{ site.baseurl }}">Wprowadzenie</a></li>
+            {% endif %}
+
+            {% if page.active == "less" %}
+                <li class="active"><a href="{{ site.baseurl }}less">Less</a></li>
+            {% else %}
+                <li><a href="{{ site.baseurl }}less">Less</a></li>
+            {% endif %}
+
+            {% if page.active == "javascript" %}
+                <li class="active"><a href="{{ site.baseurl }}javascript">JavaScript</a></li>
+            {% else %}
+                <li><a href="{{ site.baseurl }}javascript">JavaScript</a></li>
+            {% endif %}
+
+            {% if page.active == "components" %}
+            <li class="active"><a href="{{ site.baseurl }}components">Komponenty</a></li>
+            {% else %}
+            <li><a href="{{ site.baseurl }}components">Komponenty</a></li>
+            {% endif %}
+
+            {% if page.active == "templates" %}
+                <li class="active"><a href="{{ site.baseurl }}templates">Szablony Twig</a></li>
+            {% else %}
+                <li><a href="{{ site.baseurl }}templates">Szablony Twig</a></li>
+            {% endif %}
+
+            {% if page.active == "files" %}
+                <li class="active"><a href="{{ site.baseurl }}files">Pliki - nazewnictwo i lokalizacja</a></li>
+            {% else %}
+                <li><a href="{{ site.baseurl }}files">Pliki - nazewnictwo i lokalizacja</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

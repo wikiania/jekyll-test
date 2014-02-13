@@ -1,0 +1,122 @@
+---
+layout: page
+title: JavaScript
+active: javascript
+---
+
+<sidebar>
+    <ol>
+        <li><a href="#ogolne">Ogólne</a></li>
+        <li><a href="#nazewnictwo">Nazewnictwo plików</a></li>
+        <li><a href="#formatowanie">Formatowanie</a></li>
+    </ol>
+</sidebar>
+
+<article>
+    <h2><a name="ogolne">Ogólne</a></h2>
+    <p>
+        <ul>
+            <li>kod JavaScript piszemy generycznie, czyli tak aby były możliwe do użycia w szerokim polu zastosowań i w
+                różnym kontekście</li>
+            <li>kod powinien być samodokumentowany - nazwy klas, zmiennych, funkcji i metod mówią o tym za co odpowiada
+                dany fragment kodu</li>
+            <li>korzystając z wywołań biblioteki jQuery używamy funkcji <code>$</code> zamiast <code>jQuery</code>
+                oraz używamy skróconej formy <code>$(function() {});</code></li>
+            <li>
+                podpinając eventy korzystamy z metod <code>.on()</code> i <code>off()</code> - nie używamy metod
+                <code>live(), bind(), click(), blur()</code> itp. ponieważ nie pozwalają one w wydajny i wygodny sposób
+                na śledzenie zmian w drzewie DOM
+            </li>
+            <li>
+                metody, co do których istnieje duże prawdopodobieństwo, że będą używane w całym serwisie, dopisujemy do
+                klasy <code>Helper()</code> w pliku helpers.js
+            </li>
+        </ul>
+    </p>
+
+    <h2><a name="nazewnictwo">Nazewnictwo plików</a></h2>
+    <p>Nazwy plików ze skryptami powinny wskazywać na to, za obsługę jakiego modułu/widoku odpowiadają - np.
+        <code>src/GroupsBundle/Resources/public/js/userGroups.js</code>
+    </p>
+
+    <p>
+        W przypadku plików zawierających modele dodajemy suffix <code>.model</code>, np. <code>comments.model.js</code>.
+        Pliki zawierające operacje DOM na modelach nazywamy z prefixem <code>dom.</code>, np. <code>dom.comments.js</code>
+    </p>
+
+    <h2><a name="formatowanie">Formatowanie</a></h2>
+    <p>
+        Deklaracje zmiennych powinny się znajdować na początku pliku lub metody. Definiujemy je kolejno po przecinku,
+        każdą w nowej linii, najpierw deklarując zmienne zawierające obiekty jQuery (ze znakiem $ na początku), np:
+
+        <pre>
+var $a = 1,
+    b = 2,
+    c = 3;</pre>
+
+    </p>
+    <p>W jednej linii może znajdować się tylko jedno wyrażenie, zawsze zakończone średnikiem, operatory oddzielamy
+        spacją z przodu i z tyłu, np:
+    </p>
+    <pre>var a = (b + c) / 2;</pre>
+    <p>Deklarując obiekty każdą wartość piszemy w nowej linii z wcięciem, np:</p>
+    <pre>
+var coordinates = {
+    x: 29.84,
+    y: 52.32,
+    z: 10
+};
+</pre>
+    <p>Nawiasy klamrowe otwieramy przy każdym warunku lub pętli, w tej samej linii co deklaracja, np:</p>
+    <pre>
+if (condition) {
+    ...
+}
+else {
+    ...
+}
+</pre>
+    <p>Bloki z warunkami, pętlami, deklaracje/wywołania funkcji i metod oddzielamy wizualnie od reszty kodu za
+        pomocą jednoliniowego odstępu, np:
+    </p>
+    <pre>
+var a = 1,
+    b = 2;
+
+if (condition) {
+    a = b * 2;
+
+    $('#main').addClass('content');
+}
+
+Helper.dialog();</pre>
+    <p>Operatorów warunkowych używamy z umiarem, tak aby nie zaburzyć czytelności kodu, np:</p>
+    <pre>var conditionalVariable = (condition) ? true : false;</pre>
+    <p>Argumenty funkcji, metod i pętli oddzielamy spacją, np:</p>
+    <pre>
+for (i = 0; i < array.length; i++) {
+    array[i] = Helper.truncate(array[i], '...');
+}
+</pre>
+    <p>Stringi ujmujemy w apostrofy, ze względu na atrybuty znaczników HTML, które ujmujemy w cudzysłów, np: </p>
+    <pre>var str = '<span class="foo">' + content + '</span>';</pre>
+    <p>Elementy HTML budujemy w jQuery za pomocą odpowiednich metod służących do modyfikacji drzewa DOM, np:</p>
+    <pre>
+var $anchor = $('<a></a>').addClass('link')
+                   .attr('href', rootURL)
+                   .append('<span></span>').text('Kliknij');
+    </pre>
+    <p>W każdym pliku z kodem JavaScript stosujemy enkapsulację, aby zawarty w nich kod nie był widoczny poza nimi.
+        Ma to na celu zapobiegnięcie nadpisywania zmiennych i funkcji:</p>
+    <pre>
+(function() {
+    globalVariable = null;
+
+    $(function() {
+        var $list = $('ul.list');
+
+        globalVariable = 10;
+    });
+}());
+</pre>
+</article>

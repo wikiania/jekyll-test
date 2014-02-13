@@ -1,0 +1,4 @@
+name: Frontend Guideline
+markdown: redcarpet
+pygments: true
+baseurl: /styleguide/

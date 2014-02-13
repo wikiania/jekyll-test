@@ -1,0 +1,85 @@
+---
+layout: page
+title: Less
+active: less
+---
+
+<sidebar>
+    <ol>
+        <li><a href="#ogolne">Ogólne</a></li>
+        <li><a href="#dziedziczenie">Dziedziczenie</a></li>
+        <li><a href="#formatowanie">Formatowanie</a></li>
+    </ol>
+</sidebar>
+
+<article>
+
+    <h2><a name="ogolne">Ogólne</a></h2>
+
+    <p>Zbiór podstawowych styli znajduje się w pliku <code>/LayoutBundle/.../style.less</code>.<br>
+    Ładowane są tam niezbędne moduły bootstrapa, rozszerzające je pliki stworzone przez nas oraz inne style, które są
+    przeznaczone do użytku globalnego.
+
+        <ul>
+            <li>style piszemy generycznie, czyli tak aby były możliwe do użycia w szerokim polu zastosowań i w różnym
+                kontekście</li>
+            <li>jako obowiązującą jednostkę miary przyjmujemy px - jednostek względnych (% i em) używamy tylko w
+                uzasadnionych przypadkach</li>
+            <li>nie piszemy styli w atrybucie style danego tagu (z wyłączeniem mechanizmów JavaScript)</li>
+            <li>unikamy zapisywania reguł CSS w tagu <code>&lt;style&gt;</code>, bezpośrednio w szablonie</li>
+            <li>w miarę możliwości tworzymy sprite’y z elementów layoutu, aby zmniejszyć liczbę request’ów</li>
+            <li>o ile to możliwe, korzystamy z wcześniej zdefiniowanych zestawów reguł i nie powielamy kodu odpowiedzialnego
+                za te same fragmenty layoutu</li>
+        </ul>
+
+    </p>
+
+    <h2><a name="dziedziczenie">Dziedziczenie</a></h2>
+
+    <p>Jeśli chcemy zmienić domyślny wygląd elementów bootstrapowych, robimy to wyłącznie w pliku rozszerzającym,
+        o takiej samej nazwie jak modyfikowany moduł, bezpośrednio w katalogu <code>/LayoutBundle/Resources/public/less/</code>.
+        <strong>Nie dotykamy oryginalnych plików bootstrapa. Never.</strong>
+    </p>
+
+    <p>Aby korzystać z funkcji skracających niektóre długie zapisy w CSS (głównie na potrzeby obsługi kilku przeglądarek)
+        np. <code>.border-radius(5px);</code> trzeba załączyć podstawowy zestaw LESSów do arkusza, czyli:
+        <pre>@import "bundles/layout/less/style.less";</pre>
+    </p>
+
+    <p>W ten sam sposób możemy załączać arkusze właściwe dla różnych modułów na stronie.</p>
+
+    <p>Wspomniany wcześniej arkusz zawiera m.in. właśnie zestaw funkcji, zwanych w LESS mixins’ami -
+        plik <code>bootstrap/mixins.less</code>
+    </p>
+
+
+    <h2><a name="formatowanie">Formatowanie</a></h2>
+
+    <pre>#login-modal {
+    @headingColor: #000;   <-  zmienne
+
+    .border-radius(5px);   <-  mixiny
+
+    background: #fff;      <-  "normalne" reguły
+    width: 300px;
+
+    h2 {			     <- zagnieżdżenie
+        color: @headingColor;
+
+        span {
+            padding-left: 10px;
+        }
+    }
+
+    &:before {		     <- odwołanie w kontekście bieżącego elementu
+        margin-top: 5px;
+    }
+}</pre>
+
+    <p>Kod formatujemy w sposób przedstawiony powyżej, z zachowaniem nowych linii i kolejności. Dodatkowo należy
+        pamiętać o wydajności pisanych selektorów - <strong>parsery CSS czytają selektor od prawej do lewej!</strong>
+    </p>
+
+    <p><code>selector#login-modal > div > form > *:first-child > input[type="text"]</code> <- wolny</p>
+    <p><code>#login-modal fieldset:first-child input[type=”text”]</code>  <- szybki</p>
+</article>

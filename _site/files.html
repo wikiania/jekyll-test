@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <head>
+    <meta charset="utf-8">
+    <title>Pliki - nazewnictwo i lokalizacja</title>
+    <link rel="stylesheet" href="/styleguide//css/bootstrap.css" >
+    <link rel="stylesheet" href="/styleguide//css/main.css" >
+</head>
+
+
+    <section class="page">
+
+        <header>
+    <nav class="nav-primary" role="navigation" >
+        <img src="http://gstatic.goldenline.pl/gstopka/gl-white-logo.png">
+        <ul>
+            
+                <li><a href="/styleguide/">Wprowadzenie</a></li>
+            
+
+            
+                <li><a href="/styleguide/less">Less</a></li>
+            
+
+            
+                <li><a href="/styleguide/javascript">JavaScript</a></li>
+            
+
+            
+            <li><a href="/styleguide/components">Komponenty</a></li>
+            
+
+            
+                <li><a href="/styleguide/templates">Szablony Twig</a></li>
+            
+
+            
+                <li class="active"><a href="/styleguide/files">Pliki - nazewnictwo i lokalizacja</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+
+        <section id="container">
+            <sidebar>
+    <ol>
+        <li><a href="#szablony">Szablony Twig</a></li>
+        <li><a href="#assety">Assety</a></li>
+    </ol>
+</sidebar>
+
+<article>
+    <h2><a name="szablony">Szablony Twig</a></h2>
+
+    <h4>Szablony Twig:</h4>
+    <pre>/src/NazwaBundla/Resources/views/nazwaWidoku.html.twig</pre>
+    <p>Do szablonów modułowych, które są wstawiane przez <code>&#123;% include %}</code> lub <code>&#123;{ render }}</code>
+        rozszerzenie powinno wyglądać tak: <code>.inc.html.twig</code></p>
+    <p>Szablony z modalami nazywamy według schematu <code>loginModal.inc.html.twig</code></p>
+
+    <h2><a name="assety">Assety</a></h2>
+    <p>
+    <ul>
+        <li><code>/src/NazwaBundla/Resources/public/fonts/nazwaFontu.*</code></li>
+        <li><code>/src/NazwaBundla/Resources/public/img/nazwaObrazka.*</code></li>
+        <li><code>/src/NazwaBundla/Resources/public/js/nazwaSkryptu.js</code></li>
+        <li><code>/src/NazwaBundla/Resources/public/less/nazwaArkusza.less </code></li>
+    </ul>
+    </p>
+</article>
+
+        </section>
+
+    </section>
+
+    <footer>
+        <section class="footer-inner">
+    &copy; 2014 Frontend Team GoldenLine Sp. z o.o
+</section>
+    </footer>
+</body>
+</html>
